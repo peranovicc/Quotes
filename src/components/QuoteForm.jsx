@@ -8,16 +8,17 @@ const QuoteForm = () => {
 
     const addQuote = (e) => {
         e.preventDefault()
-        dispatch(createQuote(e.target.quote.value))
-        dispatch(setNotification(`You have added ${e.target.quote.value}`))  
+        
+        dispatch(createQuote(e.target.quote.value))  
+        dispatch(setNotification(`You have added ${e.target.quote.value}`,5))  
     }
 
     return (
         <>
-        <h2>Креирај нови</h2>
+        <h2>Create new</h2>
         <form onSubmit={addQuote} >
             <div><input name="quote" /></div>
-            <button>Креирај</button>
+            <button>Add Quote</button>
         </form>
         </>
     )

@@ -1,29 +1,24 @@
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import Filter from './components/Filter'
 import Notification from './components/Notification'
 import QuoteForm from './components/QuoteForm'
 import QuoteList from './components/QuoteList'
-import { removeNotification } from './reducers/notificationReducer'
+import { initQuotes } from './reducers/quotesReducer'
 
 const App = () => {
-  const notification = useSelector(store => store.notification)
   const dispatch = useDispatch()
 
   useEffect(() => {
-
-    let timer = setTimeout(() => {
-        dispatch(removeNotification())
-    },5000)
-    
-    return () => clearTimeout(timer)
-
-},[notification,dispatch])
+      dispatch(initQuotes())
+  },[dispatch])
 
   return (
     <div>
       <Notification />
-      <QuoteList />
+      <Filter />
       <QuoteForm />
+      <QuoteList />
     </div>
   )
 }

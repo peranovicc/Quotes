@@ -1,26 +1,33 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { setNotification } from '../reducers/notificationReducer'
 import { voteQuote } from '../reducers/quotesReducer'
+import { updateQuote } from '../service'
 
 const QuoteList = () => {
 
-    const citati = useSelector(store => store.quotes)
+    const quotes = useSelector(store => store.quotes)
+    const filter = useSelector(store => store.filter)
     const dispatch = useDispatch()
     const vote = (id) => {
+        let quote = quotes.find(quote => quote.id === id)
+
         dispatch(voteQuote(id))
+        updateQuote(id,{votes: quote.votes + 1})
+        dispatch(setNotification(`You have voted for: '${quote.content}'`,5))
     }
     return (
         <>
-            <h2>Цитати</h2>
+            <h2>Quotes</h2>
             {
-                citati.map(citat =>
-                    <div key={citat.id}>
+                quotes.filter(quote => quote.content.toLowerCase().includes(filter.toLowerCase())).map(quote =>
+                    <div key={quote.id}>
                         <div>
-                            {citat.content}
+                            {quote.content}
                         </div>
                         <div>
-                            has {citat.votes}
-                            <button onClick={() => vote(citat.id)}>vote</button>
+                            has {quote.votes}
+                            <button onClick={() => vote(quote.id)}>votes</button>
                         </div>
                     </div>
                 )
