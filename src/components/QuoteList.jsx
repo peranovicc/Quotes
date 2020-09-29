@@ -1,14 +1,14 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { voteQuote } from '../reducers/anecdoteReducer'
+import { voteQuote } from '../reducers/quotesReducer'
 
 const QuoteList = () => {
 
-    const citati = useSelector(store => store)
+    const citati = useSelector(store => store.quotes)
     const dispatch = useDispatch()
     const vote = (id) => {
         dispatch(voteQuote(id))
-      }
+    }
     return (
         <>
             <h2>Цитати</h2>

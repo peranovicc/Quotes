@@ -1,4 +1,4 @@
-const anecdotesAtStart = [
+const quotesAtStart = [
   'If it hurts, do it more often',
   'Adding manpower to a late software project makes it later!',
   'The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.',
@@ -34,9 +34,9 @@ export const voteQuote = (id) => {
   }
 }
 
-const initialState = anecdotesAtStart.map(asObject)
+const initialState = quotesAtStart.map(asObject)
 
-const reducer = (state = initialState, action) => {
+const quotesReducer = (state = initialState, action) => {
   switch(action.type){
     case 'ADD_QUOTE':
       return state.concat({
@@ -57,4 +57,4 @@ const reducer = (state = initialState, action) => {
   }
 }
 
-export default reducer
+export default quotesReducer

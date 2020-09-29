@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { createQuote } from '../reducers/anecdoteReducer'
+import { setNotification } from '../reducers/notificationReducer'
+import { createQuote } from '../reducers/quotesReducer'
 
 const QuoteForm = () => {
     const dispatch = useDispatch()
@@ -8,6 +9,7 @@ const QuoteForm = () => {
     const addQuote = (e) => {
         e.preventDefault()
         dispatch(createQuote(e.target.quote.value))
+        dispatch(setNotification(`You have added ${e.target.quote.value}`))  
     }
 
     return (
