@@ -2,7 +2,7 @@
 
 ### Functionality
 
-1. Fetch quotes from json-server
-2. Can vote for quotes
-3. Using react-router for parametrizing routes
-4. Using redux for storing state
+1. Fetching data from json-server
+2. Changing / Adding data
+3. Display notification to users
+4. Filtering and sorting real time
