@@ -29,6 +29,7 @@ const QuoteList = () => {
                             has {quote.votes}
                             <button onClick={() => vote(quote.id)}>votes</button>
                         </div>
+                        <hr />
                     </div>
                 )
             }
